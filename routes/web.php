@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AkademikController;
 use App\Http\Controllers\Admin\GtkController;
+use App\Http\Controllers\Admin\MasterController;
 use App\Http\Controllers\Admin\OperasionalController;
 use App\Http\Controllers\Admin\PelanggaranController;
 use App\Http\Controllers\Admin\StudentController;
@@ -60,6 +61,10 @@ Route::get('/admin/pelanggaran/data', [PelanggaranController::class, 'data'])->n
 // ===== Absensi & Laporan (Task 1.11: dummy) =====
 Route::get('/admin/absensi', [OperasionalController::class, 'absensi'])->name('admin.absensi.index');
 Route::get('/admin/laporan', [OperasionalController::class, 'laporan'])->name('admin.laporan.index');
+
+// ===== Users & Pondok (Task 1.16: dummy) =====
+Route::get('/admin/users', [MasterController::class, 'users'])->name('admin.users.index');
+Route::get('/admin/pondok', [MasterController::class, 'pondok'])->name('admin.pondok.index');
 
 // ===== Kepala Madrasah (Task 1.12: dummy) =====
 Route::get('/kepala/dashboard', [KepalaController::class, 'dashboard'])->name('kepala.dashboard');

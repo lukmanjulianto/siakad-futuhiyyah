@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\OperasionalController;
 use App\Http\Controllers\Admin\PelanggaranController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Bk\BkController;
 use App\Http\Controllers\Kepala\KepalaController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
@@ -63,8 +64,15 @@ Route::get('/kepala/dashboard', [KepalaController::class, 'dashboard'])->name('k
 Route::get('/kepala/laporan', [KepalaController::class, 'laporan'])->name('kepala.laporan');
 Route::get('/kepala/monitoring', [KepalaController::class, 'monitoring'])->name('kepala.monitoring');
 
-// ===== Dashboard peran lain (pratinjau Task 1.2; konten penuh Task 1.13+) =====
-foreach (['bk', 'pondok', 'guru'] as $role) {
+// ===== Guru BK (Task 1.13: dummy) =====
+Route::get('/bk/dashboard', [BkController::class, 'dashboard'])->name('bk.dashboard');
+Route::get('/bk/pelanggaran', [BkController::class, 'pelanggaran'])->name('bk.pelanggaran');
+Route::get('/bk/konseling', [BkController::class, 'konseling'])->name('bk.konseling');
+Route::get('/bk/tindak-lanjut', [BkController::class, 'tindakLanjut'])->name('bk.tindak-lanjut');
+Route::get('/bk/prestasi', [BkController::class, 'prestasi'])->name('bk.prestasi');
+
+// ===== Dashboard peran lain (pratinjau Task 1.2; konten penuh Task 1.14+) =====
+foreach (['pondok', 'guru'] as $role) {
     Route::get("/{$role}/dashboard", function () use ($role) {
         return view('check.role', [
             'activeRole' => $role,

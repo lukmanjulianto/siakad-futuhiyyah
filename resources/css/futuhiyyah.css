@@ -1,0 +1,141 @@
+/* SIAKAD Futuhiyyah — Design System (PRD Bab 4) */
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700&family=Inter:wght@400;500&display=swap');
+
+:root {
+  --futuhiyyah-primary: #0F7B3E;
+  --futuhiyyah-primary-dark: #0A5C2D;
+  --futuhiyyah-gold: #C9A227;
+  --futuhiyyah-danger: #DC2626;
+  --futuhiyyah-warning: #F59E0B;
+  --futuhiyyah-info: #3B82F6;
+  --futuhiyyah-success: #10B981;
+  --futuhiyyah-body-bg: #F4F6F9;
+  --futuhiyyah-card-bg: #FFFFFF;
+  --futuhiyyah-text: #1F2937;
+  --futuhiyyah-text-muted: #6B7280;
+  --futuhiyyah-font-heading: 'Plus Jakarta Sans', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  --futuhiyyah-font-body: 'Inter', system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+}
+
+body {
+  background-color: var(--futuhiyyah-body-bg);
+  color: var(--futuhiyyah-text);
+  font-family: var(--futuhiyyah-font-body);
+}
+
+h1, h2, h3, h4, h5, h6,
+.h1, .h2, .h3 {
+  font-family: var(--futuhiyyah-font-heading);
+  font-weight: 700;
+}
+
+/* Button primary → hijau Futuhiyyah */
+.btn-futuhiyyah,
+.btn-success {
+  --bs-btn-bg: var(--futuhiyyah-primary);
+  --bs-btn-border-color: var(--futuhiyyah-primary);
+  --bs-btn-hover-bg: var(--futuhiyyah-primary-dark);
+  --bs-btn-hover-border-color: var(--futuhiyyah-primary-dark);
+  --bs-btn-active-bg: var(--futuhiyyah-primary-dark);
+  --bs-btn-active-border-color: var(--futuhiyyah-primary-dark);
+  border-radius: 0.6rem;
+  font-family: var(--futuhiyyah-font-heading);
+  font-weight: 600;
+}
+
+.btn-outline-futuhiyyah {
+  color: var(--futuhiyyah-primary);
+  border-color: var(--futuhiyyah-primary);
+  border-radius: 0.6rem;
+  font-weight: 600;
+}
+.btn-outline-futuhiyyah:hover {
+  background-color: var(--futuhiyyah-primary);
+  color: #fff;
+}
+
+.bg-futuhiyyah { background-color: var(--futuhiyyah-primary) !important; }
+.bg-futuhiyyah-dark { background-color: var(--futuhiyyah-primary-dark) !important; }
+.text-futuhiyyah { color: var(--futuhiyyah-primary) !important; }
+.text-gold { color: var(--futuhiyyah-gold) !important; }
+.border-gold { border-color: var(--futuhiyyah-gold) !important; }
+
+/* Sidebar AdminLTE → hijau dark */
+.app-sidebar,
+.sidebar-futuhiyyah {
+  background-color: var(--futuhiyyah-primary-dark);
+}
+.app-sidebar .nav-link,
+.sidebar-futuhiyyah .nav-link {
+  color: rgba(255, 255, 255, 0.9);
+  border-radius: 0.6rem;
+}
+.app-sidebar .nav-link.active,
+.sidebar-futuhiyyah .nav-link.active {
+  background-color: var(--futuhiyyah-primary);
+  color: #fff;
+}
+.app-sidebar .nav-link:hover,
+.sidebar-futuhiyyah .nav-link:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+/* Card */
+.card-futuhiyyah,
+.card {
+  border-radius: 1rem;
+}
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0.5rem 1.5rem rgba(15, 123, 62, 0.15) !important;
+}
+
+/* Form */
+.form-control, .form-select {
+  border-radius: 0.6rem;
+}
+.form-control:focus, .form-select:focus {
+  border-color: var(--futuhiyyah-primary);
+  box-shadow: 0 0 0 0.2rem rgba(15, 123, 62, 0.2);
+}
+
+/* DataTables */
+table.dataTable thead th {
+  position: sticky;
+  top: 0;
+  background-color: #fff;
+}
+table.dataTable tbody tr:hover {
+  background-color: #F0FDF4 !important;
+}
+
+/* Badge status siswa (PRD Bab 4) */
+.badge-status-aktif { background-color: var(--futuhiyyah-success); }
+.badge-status-mutasi-masuk { background-color: var(--futuhiyyah-info); }
+.badge-status-mutasi-keluar { background-color: var(--futuhiyyah-warning); color: #1F2937; }
+.badge-status-nonaktif { background-color: #6B7280; }
+
+/* Level pelanggaran */
+.badge-ringan { background-color: var(--futuhiyyah-info); }
+.badge-sedang { background-color: var(--futuhiyyah-warning); color: #1F2937; }
+.badge-berat { background-color: var(--futuhiyyah-danger); }
+
+/* Micro-animation */
+.fade-slide-in {
+  animation: futuhiyyahFadeSlide 0.4s ease both;
+}
+@keyframes futuhiyyahFadeSlide {
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Auth pattern */
+.auth-islamic-bg {
+  background-color: var(--futuhiyyah-primary-dark);
+  background-image: radial-gradient(rgba(201, 162, 39, 0.18) 1.5px, transparent 1.5px);
+  background-size: 22px 22px;
+}

@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
@@ -18,8 +19,11 @@ Route::get('/lupa-password', [AuthController::class, 'forgot'])->name('password.
 Route::get('/auth/google/redirect', fn () => redirect()->route('admin.dashboard'))->name('oauth.google.redirect');
 Route::get('/auth/google/callback', fn () => redirect()->route('admin.dashboard'))->name('oauth.google.callback');
 
-// ===== Dashboard per peran (pratinjau navigasi Task 1.2; konten penuh Task 1.5+) =====
-foreach (['admin', 'kepala', 'bk', 'pondok', 'guru'] as $role) {
+// ===== Dashboard Admin (Task 1.5: dummy penuh) =====
+Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+// ===== Dashboard peran lain (pratinjau Task 1.2; konten penuh Task 1.12+) =====
+foreach (['kepala', 'bk', 'pondok', 'guru'] as $role) {
     Route::get("/{$role}/dashboard", function () use ($role) {
         return view('check.role', [
             'activeRole' => $role,

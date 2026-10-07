@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\AkademikController;
 use App\Http\Controllers\Admin\GtkController;
+use App\Http\Controllers\Admin\PelanggaranController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PublicController;
@@ -46,6 +47,10 @@ Route::get('/admin/akademik/naik-kelas', [AkademikController::class, 'naikKelas'
 Route::get('/admin/akademik/mapel', [AkademikController::class, 'mapel'])->name('admin.akademik.mapel');
 Route::get('/admin/akademik/jadwal', [AkademikController::class, 'jadwal'])->name('admin.akademik.jadwal');
 Route::get('/admin/akademik/jadwal/{template}/setting', [AkademikController::class, 'jadwalSetting'])->name('admin.akademik.jadwal.setting');
+
+// ===== Pelanggaran (Task 1.10: dummy) =====
+Route::get('/admin/pelanggaran/kategori', [PelanggaranController::class, 'kategori'])->name('admin.pelanggaran.kategori');
+Route::get('/admin/pelanggaran/data', [PelanggaranController::class, 'data'])->name('admin.pelanggaran.data');
 
 // ===== Dashboard peran lain (pratinjau Task 1.2; konten penuh Task 1.12+) =====
 foreach (['kepala', 'bk', 'pondok', 'guru'] as $role) {

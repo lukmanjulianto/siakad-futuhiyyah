@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\AkademikController;
 use App\Http\Controllers\Admin\GtkController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\AuthController;
@@ -38,6 +39,13 @@ Route::get('/admin/mutasi/keluar', [StudentController::class, 'mutasiKeluar'])->
 Route::get('/admin/gtk', [GtkController::class, 'index'])->name('admin.gtk.index');
 Route::get('/admin/gtk/create', [GtkController::class, 'create'])->name('admin.gtk.create');
 Route::get('/admin/gtk/{id}/edit', [GtkController::class, 'edit'])->name('admin.gtk.edit');
+
+// ===== Akademik (Task 1.9: dummy) =====
+Route::get('/admin/akademik/kelas', [AkademikController::class, 'kelas'])->name('admin.akademik.kelas');
+Route::get('/admin/akademik/naik-kelas', [AkademikController::class, 'naikKelas'])->name('admin.akademik.naik-kelas');
+Route::get('/admin/akademik/mapel', [AkademikController::class, 'mapel'])->name('admin.akademik.mapel');
+Route::get('/admin/akademik/jadwal', [AkademikController::class, 'jadwal'])->name('admin.akademik.jadwal');
+Route::get('/admin/akademik/jadwal/{template}/setting', [AkademikController::class, 'jadwalSetting'])->name('admin.akademik.jadwal.setting');
 
 // ===== Dashboard peran lain (pratinjau Task 1.2; konten penuh Task 1.12+) =====
 foreach (['kepala', 'bk', 'pondok', 'guru'] as $role) {

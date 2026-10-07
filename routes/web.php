@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\GtkController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PublicController;
@@ -32,6 +33,11 @@ Route::get('/admin/siswa/{id}', [StudentController::class, 'show'])->name('admin
 // ===== Mutasi (Task 1.7: dummy) =====
 Route::get('/admin/mutasi/masuk', [StudentController::class, 'mutasiMasuk'])->name('admin.mutasi.masuk');
 Route::get('/admin/mutasi/keluar', [StudentController::class, 'mutasiKeluar'])->name('admin.mutasi.keluar');
+
+// ===== GTK (Task 1.8: dummy + 2 tab) =====
+Route::get('/admin/gtk', [GtkController::class, 'index'])->name('admin.gtk.index');
+Route::get('/admin/gtk/create', [GtkController::class, 'create'])->name('admin.gtk.create');
+Route::get('/admin/gtk/{id}/edit', [GtkController::class, 'edit'])->name('admin.gtk.edit');
 
 // ===== Dashboard peran lain (pratinjau Task 1.2; konten penuh Task 1.12+) =====
 foreach (['kepala', 'bk', 'pondok', 'guru'] as $role) {

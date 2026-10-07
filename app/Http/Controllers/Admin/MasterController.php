@@ -38,4 +38,12 @@ class MasterController extends Controller
             'pengurus' => MasterDummy::pengurus(),
         ]);
     }
+
+    public function pengaturan()
+    {
+        return view('admin.pengaturan.index', [
+            'activeRole' => 'admin',
+            'userName' => 'Administrator',
+        ]);
+    }
 }

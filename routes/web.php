@@ -65,6 +65,7 @@ Route::get('/admin/laporan', [OperasionalController::class, 'laporan'])->name('a
 // ===== Users & Pondok (Task 1.16: dummy) =====
 Route::get('/admin/users', [MasterController::class, 'users'])->name('admin.users.index');
 Route::get('/admin/pondok', [MasterController::class, 'pondok'])->name('admin.pondok.index');
+Route::get('/admin/pengaturan', [MasterController::class, 'pengaturan'])->name('admin.pengaturan.index');
 
 // ===== Kepala Madrasah (Task 1.12: dummy) =====
 Route::get('/kepala/dashboard', [KepalaController::class, 'dashboard'])->name('kepala.dashboard');

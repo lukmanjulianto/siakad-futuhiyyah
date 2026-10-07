@@ -1,19 +1,14 @@
 <?php
 
+use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
-// ===== Area publik (navigasi persisten Task 1.2; konten penuh di Task 1.3) =====
-Route::get('/', fn () => view('check.public'))->name('public.home');
-Route::get('/cek-siswa', fn () => view('check.nav', [
-    'title' => 'Cek Data Siswa — SIAKAD Futuhiyyah',
-    'heading' => 'Formulir Cek Data Siswa (pratinjau navigasi Task 1.2)',
-    'desc' => 'Navbar aktif pada menu Cek Data Siswa. Formulir verifikasi NISN/Nama + tanggal lahir + nama ibu kandung dibangun penuh di Task 1.3.',
-]))->name('public.cek-siswa');
-Route::get('/tentang', fn () => view('check.nav', [
-    'title' => 'Tentang Madrasah — SIAKAD Futuhiyyah',
-    'heading' => 'Tentang MTs Futuhiyyah (pratinjau navigasi Task 1.2)',
-    'desc' => 'Navbar aktif pada menu Tentang. Profil, visi misi, dan kontak dibangun penuh di Task 1.3.',
-]))->name('public.tentang');
+// ===== Area publik (Task 1.3: konten dummy penuh) =====
+Route::get('/', [PublicController::class, 'home'])->name('public.home');
+Route::get('/cek-siswa', [PublicController::class, 'cekSiswa'])->name('public.cek-siswa');
+Route::get('/cek-siswa/hasil', [PublicController::class, 'cekHasil'])->name('public.cek-siswa.hasil');
+Route::post('/cek-siswa', fn () => redirect()->route('public.cek-siswa.hasil', ['siswa' => 'ahmad']))->name('public.cek-siswa.submit');
+Route::get('/tentang', [PublicController::class, 'tentang'])->name('public.tentang');
 
 // ===== Auth (pratinjau; form penuh di Task 1.4) =====
 Route::get('/login', fn () => view('check.auth'))->name('login');

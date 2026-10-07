@@ -39,6 +39,22 @@ class StudentDummy
         ];
     }
 
+    public static function mutasiMasuk(): array
+    {
+        return [
+            ['id' => 3, 'nisn' => '0071234569', 'nis' => '240003', 'name' => 'Muhammad Rizky Maulana', 'kelas' => 'VII-C', 'pondok' => 'Futuhiyyah Putra', 'sekolah' => 'SDIT Al-Furqon Kajen', 'alasan' => 'Masuk pondok untuk program tahfidz', 'tanggal' => '14 Jul 2025'],
+            ['id' => 9, 'nisn' => '0071234575', 'nis' => '240010', 'name' => 'Yusuf Abdullah Pratama', 'kelas' => 'VII-B', 'pondok' => 'Futuhiyyah Putra', 'sekolah' => 'MI NU 02 Wiradesa', 'alasan' => 'Pindah mengikuti kakak yang mondok', 'tanggal' => '15 Jul 2025'],
+        ];
+    }
+
+    public static function mutasiKeluar(): array
+    {
+        return [
+            ['id' => 5, 'nisn' => '0071234571', 'nis' => '240005', 'name' => 'Abdullah Faqih Hidayat', 'kelas' => 'VIII-A', 'pondok' => 'Futuhiyyah Putra', 'sekolah' => 'SMPN 2 Pekalongan', 'alasan' => 'Mengikuti orang tua pindah tugas ke Semarang', 'tanggal' => '12 Sep 2025'],
+            ['id' => 10, 'nisn' => '0071234576', 'nis' => '240011', 'name' => 'Salma Nabila Putri', 'kelas' => 'IX-A', 'pondok' => 'Futuhiyyah Putri', 'sekolah' => 'MTsN 1 Batang', 'alasan' => 'Pindah agar dekat rumah nenek', 'tanggal' => '20 Agu 2025'],
+        ];
+    }
+
     public static function beasiswa(): array
     {
         return [

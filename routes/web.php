@@ -27,6 +27,11 @@ Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('adm
 Route::get('/admin/siswa', [StudentController::class, 'index'])->name('admin.siswa.index');
 Route::get('/admin/siswa/create', [StudentController::class, 'create'])->name('admin.siswa.create');
 Route::get('/admin/siswa/{id}/edit', [StudentController::class, 'edit'])->name('admin.siswa.edit');
+Route::get('/admin/siswa/{id}', [StudentController::class, 'show'])->name('admin.siswa.show');
+
+// ===== Mutasi (Task 1.7: dummy) =====
+Route::get('/admin/mutasi/masuk', [StudentController::class, 'mutasiMasuk'])->name('admin.mutasi.masuk');
+Route::get('/admin/mutasi/keluar', [StudentController::class, 'mutasiKeluar'])->name('admin.mutasi.keluar');
 
 // ===== Dashboard peran lain (pratinjau Task 1.2; konten penuh Task 1.12+) =====
 foreach (['kepala', 'bk', 'pondok', 'guru'] as $role) {

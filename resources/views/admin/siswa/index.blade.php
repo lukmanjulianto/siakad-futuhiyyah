@@ -67,7 +67,7 @@
               <td><span class="badge text-bg-{{ $badge[$r['status']] ?? 'secondary' }}">{{ $statusOptions[$r['status']] ?? $r['status'] }}</span></td>
               <td class="text-end text-nowrap">
                 <a href="{{ route('admin.siswa.edit', $r['id']) }}" class="btn btn-sm btn-outline-futuhiyyah"><i class="bi bi-pencil"></i></a>
-                <a href="#" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></a>
+                <a href="{{ route('admin.siswa.show', $r['id']) }}" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i></a>
               </td>
             </tr>
           @endforeach

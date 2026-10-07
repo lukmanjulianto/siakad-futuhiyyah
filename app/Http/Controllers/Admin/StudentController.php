@@ -44,6 +44,73 @@ class StudentController extends Controller
         return view('admin.siswa.edit', $this->formData($row));
     }
 
+    public function show($id)
+    {
+        $row = collect(StudentDummy::list())->firstWhere('id', (int) $id) ?? StudentDummy::list()[0];
+
+        return view('admin.siswa.show', [
+            'activeRole' => 'admin',
+            'userName' => 'Administrator',
+            'row' => $row,
+            'profil' => $this->profil360($row),
+        ]);
+    }
+
+    public function mutasiMasuk()
+    {
+        return view('admin.mutasi.masuk', [
+            'activeRole' => 'admin',
+            'userName' => 'Administrator',
+            'rows' => StudentDummy::mutasiMasuk(),
+        ]);
+    }
+
+    public function mutasiKeluar()
+    {
+        return view('admin.mutasi.keluar', [
+            'activeRole' => 'admin',
+            'userName' => 'Administrator',
+            'rows' => StudentDummy::mutasiKeluar(),
+        ]);
+    }
+
+    private function profil360(array $row): array
+    {
+        $isAhmad = ($row['id'] ?? 1) === 1;
+
+        return [
+            'pribadi' => [
+                'Nama Lengkap' => $row['name'],
+                'NISN / NIS Lokal' => $row['nisn'] . ' / ' . $row['nis'],
+                'Tempat, Tanggal Lahir' => $isAhmad ? 'Pekalongan, 14 Mei 2012' : 'Pekalongan, 22 Agustus 2011',
+                'Jenis Kelamin' => $isAhmad ? 'Laki-laki' : 'Perempuan',
+                'Agama' => 'Islam',
+                'Anak ke / Jumlah Saudara' => $isAhmad ? '2 dari 3 bersaudara' : '1 dari 2 bersaudara',
+                'HP / Email' => $row['hp'] . ' / ' . strtolower(explode(' ', $row['name'])[0]) . '@student.mtsfutuhiyyah.sch.id',
+                'Pondok' => 'Pondok ' . $row['pondok'],
+            ],
+            'ortu' => [
+                'Ayah' => $isAhmad ? 'H. Muhammad Ridwan — Wiraswasta (SMA)' : 'H. Abdul Karim — Petani (SMA)',
+                'Ibu' => $row['ibu'] . ' — Ibu Rumah Tangga (SMA)',
+                'Penghasilan' => 'Rp2–5 juta per bulan',
+                'Bantuan' => $isAhmad ? 'KIP: 3201-0001 (terlampir)' : 'PKH: 3315-0099 (terlampir)',
+            ],
+            'alamat' => 'Jl. Pesantren No. 12 RT 03/RW 01, Kauman, Wiradesa, Pekalongan, Jawa Tengah',
+            'akademik' => [
+                ['tahun' => '2024/2025 Genap', 'kelas' => $isAhmad ? 'VI (SD)' : 'VII-A', 'status' => 'lulus', 'ket' => 'Lulus & diterima di MTs Futuhiyyah'],
+                ['tahun' => '2025/2026 Ganjil', 'kelas' => $row['kelas'], 'status' => $row['status'], 'ket' => 'Aktif semester berjalan'],
+            ],
+            'pelanggaran' => $isAhmad ? [
+                ['tanggal' => '12 Sep 2025', 'jenis' => 'Terlambat masuk madrasah', 'level' => 'Ringan', 'poin' => 5, 'status' => 'Selesai'],
+                ['tanggal' => '26 Sep 2025', 'jenis' => 'Tidak mengikuti pelajaran tanpa izin', 'level' => 'Sedang', 'poin' => 15, 'status' => 'Tindak lanjut BK'],
+            ] : [
+                ['tanggal' => '8 Sep 2025', 'jenis' => 'Terlambat masuk madrasah', 'level' => 'Ringan', 'poin' => 5, 'status' => 'Selesai'],
+            ],
+            'prestasi' => StudentDummy::prestasi(),
+            'beasiswa' => StudentDummy::beasiswa(),
+        ];
+    }
+
     private function formData($row): array
     {
         return [

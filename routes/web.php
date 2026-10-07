@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
@@ -21,6 +22,11 @@ Route::get('/auth/google/callback', fn () => redirect()->route('admin.dashboard'
 
 // ===== Dashboard Admin (Task 1.5: dummy penuh) =====
 Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+
+// ===== Kelola Siswa (Task 1.6: dummy + wizard 6 tab) =====
+Route::get('/admin/siswa', [StudentController::class, 'index'])->name('admin.siswa.index');
+Route::get('/admin/siswa/create', [StudentController::class, 'create'])->name('admin.siswa.create');
+Route::get('/admin/siswa/{id}/edit', [StudentController::class, 'edit'])->name('admin.siswa.edit');
 
 // ===== Dashboard peran lain (pratinjau Task 1.2; konten penuh Task 1.12+) =====
 foreach (['kepala', 'bk', 'pondok', 'guru'] as $role) {

@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\OperasionalController;
 use App\Http\Controllers\Admin\PelanggaranController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\Kepala\KepalaController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
@@ -57,8 +58,13 @@ Route::get('/admin/pelanggaran/data', [PelanggaranController::class, 'data'])->n
 Route::get('/admin/absensi', [OperasionalController::class, 'absensi'])->name('admin.absensi.index');
 Route::get('/admin/laporan', [OperasionalController::class, 'laporan'])->name('admin.laporan.index');
 
-// ===== Dashboard peran lain (pratinjau Task 1.2; konten penuh Task 1.12+) =====
-foreach (['kepala', 'bk', 'pondok', 'guru'] as $role) {
+// ===== Kepala Madrasah (Task 1.12: dummy) =====
+Route::get('/kepala/dashboard', [KepalaController::class, 'dashboard'])->name('kepala.dashboard');
+Route::get('/kepala/laporan', [KepalaController::class, 'laporan'])->name('kepala.laporan');
+Route::get('/kepala/monitoring', [KepalaController::class, 'monitoring'])->name('kepala.monitoring');
+
+// ===== Dashboard peran lain (pratinjau Task 1.2; konten penuh Task 1.13+) =====
+foreach (['bk', 'pondok', 'guru'] as $role) {
     Route::get("/{$role}/dashboard", function () use ($role) {
         return view('check.role', [
             'activeRole' => $role,

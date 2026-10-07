@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
@@ -10,8 +11,12 @@ Route::get('/cek-siswa/hasil', [PublicController::class, 'cekHasil'])->name('pub
 Route::post('/cek-siswa', fn () => redirect()->route('public.cek-siswa.hasil', ['siswa' => 'ahmad']))->name('public.cek-siswa.submit');
 Route::get('/tentang', [PublicController::class, 'tentang'])->name('public.tentang');
 
-// ===== Auth (pratinjau; form penuh di Task 1.4) =====
-Route::get('/login', fn () => view('check.auth'))->name('login');
+// ===== Auth (Task 1.4: UI dummy lengkap, backend Task 2.3) =====
+Route::get('/login', [AuthController::class, 'login'])->name('login');
+Route::get('/register', [AuthController::class, 'register'])->name('register');
+Route::get('/lupa-password', [AuthController::class, 'forgot'])->name('password.forgot');
+Route::get('/auth/google/redirect', fn () => redirect()->route('admin.dashboard'))->name('oauth.google.redirect');
+Route::get('/auth/google/callback', fn () => redirect()->route('admin.dashboard'))->name('oauth.google.callback');
 
 // ===== Dashboard per peran (pratinjau navigasi Task 1.2; konten penuh Task 1.5+) =====
 foreach (['admin', 'kepala', 'bk', 'pondok', 'guru'] as $role) {

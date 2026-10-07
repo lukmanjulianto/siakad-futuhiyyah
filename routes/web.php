@@ -9,6 +9,7 @@ use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Bk\BkController;
 use App\Http\Controllers\Kepala\KepalaController;
+use App\Http\Controllers\Pondok\PondokController;
 use App\Http\Controllers\PublicController;
 use Illuminate\Support\Facades\Route;
 
@@ -71,8 +72,13 @@ Route::get('/bk/konseling', [BkController::class, 'konseling'])->name('bk.konsel
 Route::get('/bk/tindak-lanjut', [BkController::class, 'tindakLanjut'])->name('bk.tindak-lanjut');
 Route::get('/bk/prestasi', [BkController::class, 'prestasi'])->name('bk.prestasi');
 
-// ===== Dashboard peran lain (pratinjau Task 1.2; konten penuh Task 1.14+) =====
-foreach (['pondok', 'guru'] as $role) {
+// ===== Pengurus Pondok (Task 1.14: dummy) =====
+Route::get('/pondok/dashboard', [PondokController::class, 'dashboard'])->name('pondok.dashboard');
+Route::get('/pondok/pelanggaran', [PondokController::class, 'pelanggaran'])->name('pondok.pelanggaran');
+Route::get('/pondok/monitoring', [PondokController::class, 'monitoring'])->name('pondok.monitoring');
+
+// ===== Dashboard peran lain (pratinjau Task 1.2; konten penuh Task 1.15+) =====
+foreach (['guru'] as $role) {
     Route::get("/{$role}/dashboard", function () use ($role) {
         return view('check.role', [
             'activeRole' => $role,

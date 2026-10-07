@@ -8,6 +8,7 @@ use App\Http\Controllers\Admin\PelanggaranController;
 use App\Http\Controllers\Admin\StudentController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Bk\BkController;
+use App\Http\Controllers\Guru\GuruController;
 use App\Http\Controllers\Kepala\KepalaController;
 use App\Http\Controllers\Pondok\PondokController;
 use App\Http\Controllers\PublicController;
@@ -77,22 +78,12 @@ Route::get('/pondok/dashboard', [PondokController::class, 'dashboard'])->name('p
 Route::get('/pondok/pelanggaran', [PondokController::class, 'pelanggaran'])->name('pondok.pelanggaran');
 Route::get('/pondok/monitoring', [PondokController::class, 'monitoring'])->name('pondok.monitoring');
 
-// ===== Dashboard peran lain (pratinjau Task 1.2; konten penuh Task 1.15+) =====
-foreach (['guru'] as $role) {
-    Route::get("/{$role}/dashboard", function () use ($role) {
-        return view('check.role', [
-            'activeRole' => $role,
-            'userName' => match ($role) {
-                'admin' => 'Administrator',
-                'kepala' => 'Ustadz Abdul Halim, M.Pd',
-                'bk' => 'Ustadzah Nur Laila, S.Ag',
-                'pondok' => 'Ustadz Pengasuh Pondok',
-                'guru' => 'Ustadz Muhammad Fauzan, S.Pd.I',
-                default => 'Pengguna',
-            },
-        ]);
-    })->name("{$role}.dashboard");
-}
+// ===== Guru Mapel (Task 1.15: dummy) =====
+Route::get('/guru/dashboard', [GuruController::class, 'dashboard'])->name('guru.dashboard');
+Route::get('/guru/absensi', [GuruController::class, 'absensi'])->name('guru.absensi');
+Route::get('/guru/jurnal', [GuruController::class, 'jurnal'])->name('guru.jurnal');
+Route::get('/guru/pelanggaran', [GuruController::class, 'pelanggaran'])->name('guru.pelanggaran');
+Route::get('/guru/prestasi', [GuruController::class, 'prestasi'])->name('guru.prestasi');
 
 // ===== Rute cek lama (kompatibilitas Task 1.1) =====
 Route::get('/_check/auth', fn () => view('check.auth'));
